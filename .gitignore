@@ -109,7 +109,7 @@ media/
 *.pid
 
 # Ignore Django Migrations in Development if you are working on team
-
+/myvenv
 # Only for Development only
 # **/migrations/**
 # !**/migrations
