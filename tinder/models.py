@@ -14,11 +14,13 @@ class Project(models.Model):
 
 
 class Users(AbstractUser):
-    investor = models.BooleanField(default=False)
     company_type = models.TextField(max_length=15)
+
+
+class List:
     no_list = models.ManyToManyField(Project, related_name="no_list")
     yes_list = models.ManyToManyField(Project, related_name="yes_list")
 
 
-class Image():
+class Image:
     images = models.FileField()
