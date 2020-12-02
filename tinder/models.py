@@ -14,11 +14,12 @@ class Project(models.Model):
 
 
 class Users(AbstractUser):
-    clist = models.ManyToManyField(Project, through="Choise")
+    choicelist = models.ManyToManyField(Project, through="Choise")
+    typeinvest = models.CharField()
 
 
 class Choice(models.Model):
-    ctype = models.BooleanField(default=False)
+    choicetype = models.BooleanField(default=False)
     user = models.ForeignKey(Users, on_delete=models.CASCADE)
     project = models.ForeignKey(Users, on_delete=models.CASCADE)
 

@@ -1,8 +1,7 @@
 from django.contrib import admin
-from .models import Users
-from .models import Project
-from .models import Image
-from .models import Choice
+from .models import Users, Project, Image, Choice
+
+
 # Register your models here.
 admin.site.register(Image)
 
