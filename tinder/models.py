@@ -6,21 +6,24 @@ from django.contrib.auth.models import AbstractUser
 
 class Project(models.Model):
     name = models.CharField(max_length=100)
-    email = models.EmailField()
+    email = models.EmailField(max_length=200)
     phone = models.CharField(max_length=20)
     video = models.FileField(upload_to="videos/")
     description = models.TextField(max_length=500)
-    pitch_desk = models.FileField()
+    import_images = models.FileField(upload_to="important_image/")
+    pitch_desk = models.FileField(upload_to="pitchdeck/")
 
 
 class Users(AbstractUser):
-    company_type = models.TextField(max_length=15)
+    clist = models.ManyToManyField(Project, through="Choise")
 
 
-class List:
-    no_list = models.ManyToManyField(Project, related_name="no_list")
-    yes_list = models.ManyToManyField(Project, related_name="yes_list")
+class Choice(models.Model):
+    ctype = models.BooleanField(default=False)
+    user = models.ForeignKey(Users, on_delete=models.CASCADE)
+    project = models.ForeignKey(Users, on_delete=models.CASCADE)
 
 
-class Image:
-    images = models.FileField()
+class Image(models.Model):
+    images = models.FileField(upload_to="image/")
+    startapp = models.ForeignKey(Project, on_delete=models.CASCADE)
