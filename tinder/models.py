@@ -9,8 +9,7 @@ class Project(models.Model):
     email = models.EmailField(max_length=200)
     phone = models.CharField(max_length=20)
     video = models.FileField(upload_to="videos/")
-    description = models.TextField(max_length=500)
-    import_images = models.FileField(upload_to="important_image/")
+    description = models.CharField(max_length=500)
     pitch_desk = models.FileField(upload_to="pitchdeck/")
 
 
