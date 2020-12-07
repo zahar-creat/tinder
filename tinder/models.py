@@ -14,16 +14,24 @@ class Project(models.Model):
 
 
 class Users(AbstractUser):
-    choicelist = models.ManyToManyField(Project, through="Choise")
-    typeinvest = models.CharField()
+    choicelist = models.ManyToManyField(Project, through="Choice")
+    investor = "Инвестор"
+    user = "Пользователь"
+    users_list = [(investor, "Инвестор"), (user, "Пользователь")]
+    user_type = models.CharField(max_length=100, choices=users_list, default=investor)
+    company = "Компания"
+    private = "Частное лицо"
+    fund = "Фонд"
+    comp_list = [(company, "Компания"), (private, "Частное лицо"), (fund, "Фонд")]
+    company_type = models.CharField(max_length=100, choices=comp_list, default=company)
 
 
 class Choice(models.Model):
     choicetype = models.BooleanField(default=False)
-    user = models.ForeignKey(Users, on_delete=models.CASCADE)
-    project = models.ForeignKey(Users, on_delete=models.CASCADE)
+    users = models.ForeignKey(Users, on_delete=models.CASCADE)
+    project = models.ForeignKey(Project, on_delete=models.CASCADE)
 
 
 class Image(models.Model):
     images = models.FileField(upload_to="image/")
-    startapp = models.ForeignKey(Project, on_delete=models.CASCADE)
+    startup = models.ForeignKey(Project, on_delete=models.CASCADE)

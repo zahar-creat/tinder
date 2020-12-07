@@ -13,9 +13,9 @@ class ChoiceInLine(admin.TabularInline):
 
 @admin.register(Users)
 class Useradmin(admin.ModelAdmin):
-    inlines = (ChoiceInLine)
+    inlines = (ChoiceInLine,)
 
 
 @admin.register(Project)
 class Projectadmin(admin.ModelAdmin):
-    inlines = (ChoiceInLine)
+    inlines = (ChoiceInLine,)
