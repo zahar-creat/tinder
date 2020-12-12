@@ -33,5 +33,6 @@ class Choice(models.Model):
 
 
 class Image(models.Model):
-    images = models.FileField(upload_to="image/")
     startup = models.ForeignKey(Project, on_delete=models.CASCADE)
+    images = models.FileField(upload_to="image/")
+
