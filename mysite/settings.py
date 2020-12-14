@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "tinder",
     "django.contrib.sites",
     "allauth",
+    "allauth.socialaccount",
     "allauth.account",
 ]
 
